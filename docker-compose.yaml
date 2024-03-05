@@ -1,0 +1,39 @@
+version: “3.5”
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:jdk21
+    ports:
+      - 8080:8080
+    restart: always
+    networks:
+      - cloudacademylabs
+  nexus:
+    container_name: nexus
+    image: sonatype/nexus3:3.65.0
+    ports:
+      - 8081:8081
+    restart: always
+    networks:
+      - cloudacademylabs
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube:9.9.0-community
+    ports:
+      - 9000:9000
+      - 9092:9092
+    restart: always
+    networks:
+      - cloudacademylabs
+  dependency-track:
+    container_name: dependency-track
+    image: owasp/dependency-track
+    ports:
+      - 7000:8080
+    restart: always
+    networks:
+      - cloudacademylabs
+
+networks:
+  cloudacademylabs:
+    name: cloudacademylabs
