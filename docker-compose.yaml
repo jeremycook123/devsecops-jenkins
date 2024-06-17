@@ -9,8 +9,8 @@ services:
     networks:
       - cloudacademylabs
   nexus:
-    container_name: nexus
-    image: sonatype/nexus3:3.65.0
+    container_name: nexus3
+    image: sonatype/nexus3:3.69.0
     ports:
       - 8081:8081
     restart: always
@@ -18,7 +18,7 @@ services:
       - cloudacademylabs
   sonarqube:
     container_name: sonarqube
-    image: sonarqube:9.9.0-community
+    image: sonarqube:9.9.5-community
     ports:
       - 9000:9000
       - 9092:9092
